@@ -12,4 +12,4 @@
 (define (average x y)
     (/ (+ x y) 2))
     
-(sqrt 1 4)
+(sqrt 1.0 9)
