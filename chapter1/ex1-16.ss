@@ -1,0 +1,10 @@
+(define (fast-exp a n)
+    (define (iter res base b)
+        (cond ((= b 0) res)
+              ((even? b) (iter res (* base base) (quotient b 2)))
+              (else (iter (* res base) (* base base) (quotient b 2)))))
+    (iter 1 a n))
+
+(fast-exp 2 3)
+(fast-exp 2 10)
+(fast-exp 3 10)
