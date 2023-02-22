@@ -86,3 +86,19 @@
 (table-query t '3 '1)
 (table-query t '3 '2)
 (table-query t '3 '3)
+
+
+;--------------------------------------------------------------------------------------------
+(define (new-table title)
+    (let ((t (make-table title)))
+        (lambda (m) 
+            (cond ((eq? m 'title) (table-title t))
+                  ((eq? m 'insert) (lambda (key1 key2 value) (table-insert t key1 key2 value)))
+                  ((eq? m 'query) (lambda (key1 key2) (table-query t key1 key2)))
+                  (else (error "Unknown message: TABLE" m))))))
+
+
+(define T (new-table 'testTable))
+(T 'title)
+((T 'insert) '1 '1 'a)
+((T 'query) '1 '1)
